@@ -13,15 +13,20 @@ UINavigationControllerDelegate {
 
     @IBOutlet weak var topTextFieldOutlet: UITextField!
     @IBOutlet weak var bottomTextFieldOutlet: UITextField!
+    @IBOutlet weak var cameraButton: UITextField!
+    @IBOutlet weak var albumButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
     //set both textfields
-   // weak var topTextField : UITextField!
-    topTextFieldOutlet.text = "Top Text Test"
-    bottomTextFieldOutlet.text = "Bottom Text Test"
+    topTextFieldOutlet.text = "TOP"
+    topTextFieldOutlet.textAlignment = .center
+    bottomTextFieldOutlet.text = "BOTTOM"
+    bottomTextFieldOutlet.textAlignment = .center
     
     }
 
@@ -34,16 +39,34 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func cameraLoadingAction(_ sender: Any) {
+    
+        if !UIImagePickerController.isSourceTypeAvailable(.camera){
+            
+            let alertController = UIAlertController.init(title: nil, message: "Device has no camera.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction.init(title: "Alright", style: .default, handler: {(alert: UIAlertAction!) in
+            })
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        else{
+            let cameraController = UIImagePickerController()
+            cameraController.delegate = self
+            cameraController.sourceType = .camera
+            present(cameraController, animated: true, completion: nil)
+        }
         
-    let cameraController = UIImagePickerController()
-    cameraController.delegate = self
-    cameraController.sourceType = .camera
-    present(cameraController, animated: true, completion: nil)
-    //needs to implement boolean for when camera is not available
+  
+    }
+    
+    //    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //code to check if device has available camera
         
-//    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     @IBAction func TopTextFieldAction(_ sender: Any) {
