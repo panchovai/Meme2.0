@@ -28,6 +28,7 @@ UINavigationControllerDelegate {
     //set both textfields
     topTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     topTextFieldOutlet.textAlignment = .center
+        
     bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     bottomTextFieldOutlet.textAlignment = .center
     
@@ -67,7 +68,7 @@ UINavigationControllerDelegate {
     //    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     
     override func viewWillAppear(_ animated: Bool) {
-        //code to check if device has available camera
+        //code to check if device has available camera
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
@@ -75,8 +76,9 @@ UINavigationControllerDelegate {
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth:  -5.0
+        
     ]
     
     @IBAction func TopTextFieldAction(_ sender: Any) {
