@@ -17,15 +17,18 @@ UINavigationControllerDelegate {
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var imageView: UIImageView!
     
+    
+    let selectImageController = UIImagePickerController()
     
     override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     //set both textfields
-    topTextFieldOutlet.text = "TOP"
+    topTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     topTextFieldOutlet.textAlignment = .center
-    bottomTextFieldOutlet.text = "BOTTOM"
+    bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     bottomTextFieldOutlet.textAlignment = .center
     
     }
@@ -69,6 +72,13 @@ UINavigationControllerDelegate {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
+    let memeTextAttributes: [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.strokeColor: UIColor.black,
+        NSAttributedString.Key.foregroundColor: UIColor.white,
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
+        NSAttributedString.Key.strokeWidth:  -5.0
+    ]
+    
     @IBAction func TopTextFieldAction(_ sender: Any) {
     }
     
@@ -81,6 +91,27 @@ UINavigationControllerDelegate {
     
     @IBAction func ShareAction(_ sender: Any) {
     }
+    
+    //Selecting the image
+    func selectImage(sourceType: UIImagePickerController.SourceType){
+     
+        selectImageController.delegate = self
+        selectImageController.sourceType = sourceType
+        present(selectImageController, animated: true, completion: nil)
+        
+    }
+    //Receiving selected image manipulation
+    
+    func selectedImage(_picker: UIImagePickerController, didFinishMediawithInfo info: [UIImagePickerController.InfoKey:Any]){
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            
+        }
+    }
+    
+    
     
 }
 
