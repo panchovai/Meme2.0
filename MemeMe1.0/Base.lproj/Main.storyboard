@@ -22,14 +22,14 @@
                                 <rect key="frame" x="10" y="40" width="355" height="587"/>
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onT-Je-MXa" userLabel="ToolbarTop">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="29"/>
                                         <items>
-                                            <barButtonItem title="Share" id="SPp-n1-qgc">
+                                            <barButtonItem systemItem="action" id="SPp-n1-qgc">
                                                 <connections>
                                                     <action selector="ShareAction:" destination="BYZ-38-t0r" id="h0J-ee-kQy"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Cancel" id="UaP-ma-i7S">
+                                            <barButtonItem systemItem="cancel" id="UaP-ma-i7S">
                                                 <connections>
                                                     <action selector="CancelAction:" destination="BYZ-38-t0r" id="nRX-6D-uAE"/>
                                                 </connections>
@@ -37,7 +37,7 @@
                                         </items>
                                     </toolbar>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-8j-7H9">
-                                        <rect key="frame" x="0.0" y="119" width="355" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="355" height="30"/>
                                         <attributedString key="attributedText">
                                             <fragment content="TOP">
                                                 <attributes>
@@ -53,11 +53,11 @@
                                         </connections>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UEV-sH-r6e">
-                                        <rect key="frame" x="0.0" y="240" width="355" height="107"/>
+                                        <rect key="frame" x="0.0" y="241" width="355" height="91"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="roundedRect" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q5z-wr-1fT">
-                                        <rect key="frame" x="0.0" y="438" width="355" height="30"/>
+                                        <rect key="frame" x="0.0" y="423" width="355" height="30"/>
                                         <attributedString key="attributedText">
                                             <fragment content="BOTTOM">
                                                 <attributes>
@@ -73,9 +73,9 @@
                                         </connections>
                                     </textField>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-tj-0eK" userLabel="ToolbarBottom">
-                                        <rect key="frame" x="0.0" y="559" width="355" height="28"/>
+                                        <rect key="frame" x="0.0" y="544" width="355" height="43"/>
                                         <items>
-                                            <barButtonItem title="Camera" id="wFP-AR-KeV">
+                                            <barButtonItem systemItem="camera" id="wFP-AR-KeV">
                                                 <connections>
                                                     <action selector="cameraLoadingAction:" destination="BYZ-38-t0r" id="NgC-sv-Dqo"/>
                                                 </connections>

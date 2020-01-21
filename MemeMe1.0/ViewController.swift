@@ -31,6 +31,8 @@ UINavigationControllerDelegate {
         
     bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     bottomTextFieldOutlet.textAlignment = .center
+        
+    imageView.contentMode = .scaleAspectFit
     
     }
 
@@ -44,6 +46,13 @@ UINavigationControllerDelegate {
     
     @IBAction func cameraLoadingAction(_ sender: Any) {
     
+      choosePictureFromAlbumOrCameraSource(source: .camera)
+        
+  
+    }
+    
+    func choosePictureFromAlbumOrCameraSource(source: UIImagePickerController.SourceType){
+        
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
             
             let alertController = UIAlertController.init(title: nil, message: "Device has no camera.", preferredStyle: .alert)
@@ -62,7 +71,6 @@ UINavigationControllerDelegate {
             present(cameraController, animated: true, completion: nil)
         }
         
-  
     }
     
     //    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
