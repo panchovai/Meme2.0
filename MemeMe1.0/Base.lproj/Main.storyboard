@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="UEV-sH-r6e">
-                                <rect key="frame" x="-561" y="-656" width="1536" height="2048"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-tj-0eK" userLabel="ToolbarBottom">
-                                <rect key="frame" x="1" y="667" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="667" width="736" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="wFP-AR-KeV">
                                         <connections>
@@ -90,11 +90,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uxp-tj-0eK" firstAttribute="top" secondItem="Q5z-wr-1fT" secondAttribute="bottom" constant="87" id="1Gx-3s-C4L"/>
+                            <constraint firstItem="UEV-sH-r6e" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2sD-Ma-GBR"/>
                             <constraint firstItem="IxJ-8j-7H9" firstAttribute="centerX" secondItem="uxp-tj-0eK" secondAttribute="centerX" id="AIC-uw-YpZ"/>
                             <constraint firstItem="onT-Je-MXa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Aem-I1-926"/>
+                            <constraint firstItem="UEV-sH-r6e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DHw-6i-SIL"/>
+                            <constraint firstItem="UEV-sH-r6e" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HSj-gw-hyL"/>
                             <constraint firstItem="onT-Je-MXa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Iea-RL-vHT"/>
+                            <constraint firstAttribute="trailing" secondItem="UEV-sH-r6e" secondAttribute="trailing" id="LJN-1I-vkG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IxJ-8j-7H9" secondAttribute="trailing" constant="322" id="acE-AE-vvq"/>
                             <constraint firstItem="Q5z-wr-1fT" firstAttribute="top" secondItem="IxJ-8j-7H9" secondAttribute="bottom" constant="5" id="eYZ-rZ-GFV"/>
+                            <constraint firstItem="UEV-sH-r6e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fY5-p9-kOc"/>
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h6i-Bx-6bs"/>
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i3p-m4-5gy"/>
                             <constraint firstItem="onT-Je-MXa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nbe-iQ-ndS"/>
@@ -103,6 +108,7 @@
                             <constraint firstItem="IxJ-8j-7H9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="pPd-Mn-2Vl"/>
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tYo-bT-Q7v"/>
                             <constraint firstItem="IxJ-8j-7H9" firstAttribute="trailing" secondItem="Q5z-wr-1fT" secondAttribute="trailing" id="tqR-IR-NRi"/>
+                            <constraint firstItem="UEV-sH-r6e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zCK-2a-ndw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IxJ-8j-7H9" secondAttribute="bottom" constant="221" id="zCW-m9-C6d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -120,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897.10144927536237" y="136.14130434782609"/>
+            <point key="canvasLocation" x="896.73913043478262" y="134.78260869565219"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uIV-xh-6he">
