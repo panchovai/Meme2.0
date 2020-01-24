@@ -57,7 +57,7 @@ UINavigationControllerDelegate {
             
             let alertController = UIAlertController.init(title: nil, message: "Device has no camera.", preferredStyle: .alert)
             
-            let okAction = UIAlertAction.init(title: "Alright", style: .default, handler: {(alert: UIAlertAction!) in
+            let okAction = UIAlertAction.init(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in
             })
             
             alertController.addAction(okAction)
