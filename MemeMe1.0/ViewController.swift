@@ -102,6 +102,8 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func CancelAction(_ sender: Any) {
+        
+        setMemeDefault()
     }
     
     @IBAction func ShareAction(_ sender: Any) {
@@ -127,6 +129,16 @@ UINavigationControllerDelegate {
             
         }
             dismiss(animated: true, completion: nil)
+    }
+    //write a function to set all values of Meme object to default for cancel functionality
+    func setMemeDefault(){
+        
+        imageView.image = nil
+        topTextFieldOutlet.text = "TOP"
+        bottomTextFieldOutlet.text = "BOTTOM"
+        
+        
+        
     }
     
     
