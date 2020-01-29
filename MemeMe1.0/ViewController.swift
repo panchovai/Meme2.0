@@ -38,20 +38,24 @@ UINavigationControllerDelegate {
 
     @IBAction func albumLoadingAction(_ sender: Any) {
         
-    let albumController = UIImagePickerController()
-    albumController.delegate = self
-    albumController.sourceType = .photoLibrary
-    present(albumController, animated: true, completion: nil)
+   // selectImage(sourceType: .photoLibrary)
+   let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true, completion: nil)
+        
+    
     }
     
     @IBAction func cameraLoadingAction(_ sender: Any) {
     
-      choosePictureFromAlbumOrCameraSource(source: .camera)
+      choosePictureFromCameraSource(source: .camera)
         
   
     }
     
-    func choosePictureFromAlbumOrCameraSource(source: UIImagePickerController.SourceType){
+    func choosePictureFromCameraSource(source: UIImagePickerController.SourceType){
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
             
@@ -104,21 +108,24 @@ UINavigationControllerDelegate {
     
     //Selecting the image
     func selectImage(sourceType: UIImagePickerController.SourceType){
-     
-        selectImageController.delegate = self
-        selectImageController.sourceType = sourceType
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+      //  imagePicker.sourceType = sourceType
         present(selectImageController, animated: true, completion: nil)
         
     }
     //Receiving selected image manipulation
     
-    func selectedImage(_picker: UIImagePickerController, didFinishMediawithInfo info: [UIImagePickerController.InfoKey:Any]){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = image
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            imageView.image = editedImage
             imageView.contentMode = .scaleAspectFit
+            shareButton.isEnabled = true
             
         }
+            dismiss(animated: true, completion: nil)
     }
     
     
