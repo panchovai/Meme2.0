@@ -72,6 +72,7 @@ UINavigationControllerDelegate {
             let cameraController = UIImagePickerController()
             cameraController.delegate = self
             cameraController.sourceType = .camera
+            cameraController.allowsEditing = true
             present(cameraController, animated: true, completion: nil)
         }
         
