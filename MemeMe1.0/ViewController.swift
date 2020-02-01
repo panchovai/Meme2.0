@@ -107,6 +107,16 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func ShareAction(_ sender: Any) {
+        
+        let memedImageToBeSaved = saveMeme()
+        let activityView = UIActivityViewController(activityItems: [memedImageToBeSaved], applicationActivities: nil)
+        activityView.completionWithItemsHandler = {(activity, completed, items, error) in
+//            if (completed) {
+//                let _ = self.save()
+//            }
+//        
+        self.present(activityView, animated: true, completion: nil)
+        }
     }
     
     //Selecting the image
@@ -136,12 +146,53 @@ UINavigationControllerDelegate {
         imageView.image = nil
         topTextFieldOutlet.text = "TOP"
         bottomTextFieldOutlet.text = "BOTTOM"
+
+    }
+    
+    //write a function to save the Meme object, it needs to take the 2 textfields plus the image
+    
+    
+ //MemeStruct
+    
+    struct MemeStruct{
+        
+        var topTextFieldString: String
+        var bottomTextFieldString: String
+        var image: UIImage
+        var memedImage: UIImage
+        
+        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
+            self.topTextFieldString = topTextFieldString
+            self.bottomTextFieldString = bottomTextFieldString
+            self.image = image
+            self.memedImage = memedImage
+        }
+    }
+    
+    //function to save image as a memedImage
+    
+    func generateMemedImage()->UIImage{
+        
+        // TODO: Hide toolbar and navbar
         
         
         
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsGetImageFromCurrentImageContext()
+        return memedImage
     }
     
     
+    func saveMeme(){
+        
+        let memedImage = generateMemedImage()
+        _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!, bottomTextFieldString: bottomTextFieldOutlet.text!, image: imageView.image!, memedImage: memedImage)
     
+        
+    }
 }
 
