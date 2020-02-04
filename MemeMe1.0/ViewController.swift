@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var topTextFieldOutlet: UITextField!
     @IBOutlet weak var bottomTextFieldOutlet: UITextField!
@@ -18,6 +18,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolbar: UIToolbar!
     
     
     let selectImageController = UIImagePickerController()
@@ -26,13 +28,21 @@ UINavigationControllerDelegate {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     //set both textfields
+    bottomTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
+    topTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
+        
     topTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     topTextFieldOutlet.textAlignment = .center
         
     bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     bottomTextFieldOutlet.textAlignment = .center
         
+        
+        
     imageView.contentMode = .scaleAspectFit
+        
+       
+        
     
     }
 
@@ -84,6 +94,15 @@ UINavigationControllerDelegate {
         //code to check if device has available camera
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
@@ -110,14 +129,39 @@ UINavigationControllerDelegate {
         
         let memedImageToBeSaved = saveMeme()
         let activityView = UIActivityViewController(activityItems: [memedImageToBeSaved], applicationActivities: nil)
-        activityView.completionWithItemsHandler = {(activity, completed, items, error) in
+        
+//        activityView.completionWithItemsHandler = {(activity, completed, items, error) in
 //            if (completed) {
 //                let _ = self.save()
 //            }
-//        
-        self.present(activityView, animated: true, completion: nil)
+//        self.present(activityView, animated: true, completion: nil)
+//        }
+    }
+    
+    //return when done typing
+    
+    func textFieldIsBeingEdited(_ textField: UITextField) {
+        if textField.text == "TOP" || textField.text == "BOTTOM"{
+            textField.text = ""
         }
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text?.isEmpty ?? true{
+            if textField==topTextFieldOutlet{
+                textField.text="TOP"
+            }
+            else{
+                textField.text="BOTTOM"
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
     //Selecting the image
     func selectImage(sourceType: UIImagePickerController.SourceType){
@@ -158,15 +202,15 @@ UINavigationControllerDelegate {
         
         var topTextFieldString: String
         var bottomTextFieldString: String
-        var image: UIImage
-        var memedImage: UIImage
+        var image: UIImage?
+        var memedImage: UIImage?
         
-        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
-            self.topTextFieldString = topTextFieldString
-            self.bottomTextFieldString = bottomTextFieldString
-            self.image = image
-            self.memedImage = memedImage
-        }
+//        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
+//            self.topTextFieldString = topTextFieldString
+//            self.bottomTextFieldString = bottomTextFieldString
+//            self.image = image
+//            self.memedImage = memedImage
+//        }
     }
     
     //function to save image as a memedImage
@@ -175,7 +219,8 @@ UINavigationControllerDelegate {
         
         // TODO: Hide toolbar and navbar
         
-        
+        bottomToolbar.isHidden = true
+        topToolbar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -190,9 +235,46 @@ UINavigationControllerDelegate {
     func saveMeme(){
         
         let memedImage = generateMemedImage()
-        _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!, bottomTextFieldString: bottomTextFieldOutlet.text!, image: imageView.image!, memedImage: memedImage)
+        _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
+                       bottomTextFieldString: bottomTextFieldOutlet.text!,
+                       image: imageView.image!, memedImage: memedImage)
     
         
     }
+    
+    //shiftingviews, keyboard actions
+    
+    
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    //implement KeyboardWillHide
+    
+    func keyboardWillHide(_notification:Notification){
+        if bottomTextFieldOutlet.isFirstResponder{
+            view.frame.origin.y = 0
+        }
+    }
+    
+    
 }
 
