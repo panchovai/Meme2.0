@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
-
+    
     @IBOutlet weak var topTextFieldOutlet: UITextField!
     @IBOutlet weak var bottomTextFieldOutlet: UITextField!
     @IBOutlet weak var cameraButton: UITextField!
@@ -25,37 +25,37 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     let selectImageController = UIImagePickerController()
     
     override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
-    //set both textfields
-    bottomTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
-    topTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        //set both textfields
+        bottomTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
+        topTextFieldOutlet.delegate = self //this makes textfield keyboard actions to work
         
-    topTextFieldOutlet.defaultTextAttributes = memeTextAttributes
-    topTextFieldOutlet.textAlignment = .center
+        topTextFieldOutlet.defaultTextAttributes = memeTextAttributes
+        topTextFieldOutlet.textAlignment = .center
         
-    bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
-    bottomTextFieldOutlet.textAlignment = .center
-    
-    imageView.contentMode = .scaleAspectFit
-
+        bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
+        bottomTextFieldOutlet.textAlignment = .center
+        
+        imageView.contentMode = .scaleAspectFit
+        
     }
-
+    
     @IBAction func albumLoadingAction(_ sender: Any) {
         
-   // selectImage(sourceType: .photoLibrary)
-   let pickerController = UIImagePickerController()
+        // selectImage(sourceType: .photoLibrary)
+        let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = .photoLibrary
         pickerController.allowsEditing = true
         present(pickerController, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func cameraLoadingAction(_ sender: Any) {
-    
-      choosePictureFromCameraSource(source: .camera)
-
+        
+        choosePictureFromCameraSource(source: .camera)
+        
     }
     
     func choosePictureFromCameraSource(source: UIImagePickerController.SourceType){
@@ -84,12 +84,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     //    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     
     override func viewWillAppear(_ animated: Bool) {
-       
+        
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-         print("View will dissapear")
+        print("View will dissapear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,7 +124,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let memedImageToBeSaved = saveMeme()
         let activityView = UIActivityViewController(activityItems: [memedImageToBeSaved], applicationActivities: nil)
         self.present(activityView, animated: true, completion: nil)
-    
+        
         
     }
     
@@ -158,7 +158,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-      //  imagePicker.sourceType = sourceType
+        //  imagePicker.sourceType = sourceType
         present(selectImageController, animated: true, completion: nil)
         
     }
@@ -172,7 +172,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             shareButton.isEnabled = true
             
         }
-            dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     //write a function to set all values of Meme object to default for cancel functionality
     func setMemeDefault(){
@@ -180,13 +180,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imageView.image = nil
         topTextFieldOutlet.text = "TOP"
         bottomTextFieldOutlet.text = "BOTTOM"
-
+        
     }
     
     //write a function to save the Meme object, it needs to take the 2 textfields plus the image
     
     
- //MemeStruct
+    //MemeStruct
     
     struct MemeStruct{
         
@@ -228,7 +228,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
                        bottomTextFieldString: bottomTextFieldOutlet.text!,
                        image: imageView.image!, memedImage: memedImage)
-    
+        
         return memedImage
     }
     
@@ -239,7 +239,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -252,7 +252,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @objc func keyboardWillShow(_ notification:Notification) {
         
         if(bottomTextFieldOutlet.isEditing){
-        view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
