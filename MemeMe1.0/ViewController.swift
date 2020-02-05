@@ -91,18 +91,19 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     //    cameraController.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     
     override func viewWillAppear(_ animated: Bool) {
-        //code to check if device has available camera
-        
+       
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+         print("View will dissapear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        print("View will dissapear")
     }
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
@@ -158,7 +159,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        textField.resignFirstResponder()   //should I use the bottomtextfield?
         return true
     }
     
@@ -257,7 +258,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ notification:Notification) {
         
+        if(bottomTextFieldOutlet.isFirstResponder){
         view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -272,6 +275,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func keyboardWillHide(_notification:Notification){
         if bottomTextFieldOutlet.isFirstResponder{
             view.frame.origin.y = 0
+            print("keyboard will hide")
         }
     }
     
