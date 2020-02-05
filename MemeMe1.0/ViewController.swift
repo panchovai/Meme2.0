@@ -36,14 +36,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     bottomTextFieldOutlet.defaultTextAttributes = memeTextAttributes
     bottomTextFieldOutlet.textAlignment = .center
-        
-        
-        
-    imageView.contentMode = .scaleAspectFit
-        
-       
-        
     
+    imageView.contentMode = .scaleAspectFit
+
     }
 
     @IBAction func albumLoadingAction(_ sender: Any) {
@@ -54,15 +49,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         pickerController.sourceType = .photoLibrary
         pickerController.allowsEditing = true
         present(pickerController, animated: true, completion: nil)
-        
-    
+
     }
     
     @IBAction func cameraLoadingAction(_ sender: Any) {
     
       choosePictureFromCameraSource(source: .camera)
-        
-  
+
     }
     
     func choosePictureFromCameraSource(source: UIImagePickerController.SourceType){
@@ -130,13 +123,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let memedImageToBeSaved = saveMeme()
         let activityView = UIActivityViewController(activityItems: [memedImageToBeSaved], applicationActivities: nil)
+        self.present(activityView, animated: true, completion: nil)
+    
         
-//        activityView.completionWithItemsHandler = {(activity, completed, items, error) in
-//            if (completed) {
-//                let _ = self.save()
-//            }
-//        self.present(activityView, animated: true, completion: nil)
-//        }
     }
     
     //return when done typing
@@ -206,12 +195,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var image: UIImage?
         var memedImage: UIImage?
         
-//        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
-//            self.topTextFieldString = topTextFieldString
-//            self.bottomTextFieldString = bottomTextFieldString
-//            self.image = image
-//            self.memedImage = memedImage
-//        }
+        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
+            self.topTextFieldString = topTextFieldString
+            self.bottomTextFieldString = bottomTextFieldString
+            self.image = image
+            self.memedImage = memedImage
+        }
     }
     
     //function to save image as a memedImage
@@ -233,14 +222,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     
-    func saveMeme(){
+    func saveMeme() ->UIImage{
         
         let memedImage = generateMemedImage()
         _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
                        bottomTextFieldString: bottomTextFieldOutlet.text!,
                        image: imageView.image!, memedImage: memedImage)
     
-        
+        return memedImage
     }
     
     //shiftingviews, keyboard actions
