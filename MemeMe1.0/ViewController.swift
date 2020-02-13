@@ -222,14 +222,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     
-    func saveMeme() ->UIImage{
+    func saveMeme(){
         
         let memedImage = generateMemedImage()
-        _ = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
+        let meme = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
                        bottomTextFieldString: bottomTextFieldOutlet.text!,
                        image: imageView.image!, memedImage: memedImage)
         
-        return memedImage
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     //shiftingviews, keyboard actions
