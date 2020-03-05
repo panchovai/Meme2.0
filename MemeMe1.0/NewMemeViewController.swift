@@ -186,22 +186,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     //write a function to save the Meme object, it needs to take the 2 textfields plus the image
     
     
-    //MemeStruct
+  
     
-    struct MemeStruct{
-        
-        var topTextFieldString: String
-        var bottomTextFieldString: String
-        var image: UIImage?
-        var memedImage: UIImage?
-        
-        init(topTextFieldString: String, bottomTextFieldString: String, image: UIImage, memedImage: UIImage ) {
-            self.topTextFieldString = topTextFieldString
-            self.bottomTextFieldString = bottomTextFieldString
-            self.image = image
-            self.memedImage = memedImage
-        }
-    }
     
     //function to save image as a memedImage
     

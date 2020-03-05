@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q3a-na-epq">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -73,6 +73,9 @@
                         <viewLayoutGuide key="safeArea" id="xbn-w2-WPb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="VJY-yJ-5ml" userLabel="Collection View"/>
+                    <connections>
+                        <outlet property="CollectionViewFlowLayout" destination="Rfg-P0-sdL" id="cuJ-da-4FS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iu3-eB-gyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +232,6 @@
         <!--Table View Controller-->
         <scene sceneID="t1s-ds-X11">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4uD-Pe-DWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="eh2-K2-jSy" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X2y-Wk-B52">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -245,6 +247,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uD-Pe-DWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2296" y="107"/>
         </scene>
