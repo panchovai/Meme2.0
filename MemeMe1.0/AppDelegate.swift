@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Properties
     var window: UIWindow?
     var memes = [ViewController.MemeStruct]()
+    //from videos: var memes = [Meme]()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
