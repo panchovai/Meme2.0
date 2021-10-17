@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zEf-Nt-O8F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zEf-Nt-O8F">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UEV-sH-r6e">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-tj-0eK" userLabel="ToolbarBottom">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="638" width="414" height="49"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="wFP-AR-KeV">
                                         <connections>
@@ -35,7 +36,7 @@
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onT-Je-MXa" userLabel="ToolbarTop">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="SPp-n1-qgc">
                                         <connections>
@@ -50,7 +51,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="line" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q5z-wr-1fT">
-                                <rect key="frame" x="173.33333333333334" y="606.33333333333337" width="67.333333333333343" height="26.666666666666629"/>
+                                <rect key="frame" x="173.33333333333334" y="552.33333333333337" width="67.333333333333343" height="26.666666666666629"/>
                                 <attributedString key="attributedText">
                                     <fragment content="BOTTOM">
                                         <attributes>
@@ -66,7 +67,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-8j-7H9">
-                                <rect key="frame" x="189" y="60.999999999999993" width="36" height="26.666666666666664"/>
+                                <rect key="frame" x="189" y="105" width="36" height="26.666666666666657"/>
                                 <attributedString key="attributedText">
                                     <fragment content="TOP">
                                         <attributes>
@@ -82,6 +83,7 @@
                                 </connections>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2sD-Ma-GBR"/>
@@ -106,7 +108,6 @@
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tYo-bT-Q7v"/>
                             <constraint firstItem="UEV-sH-r6e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zCK-2a-ndw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="TAQ-z0-tvp"/>
                     <connections>
@@ -125,17 +126,17 @@
             </objects>
             <point key="canvasLocation" x="2016" y="136"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="9ec-sE-iG1">
             <objects>
                 <tableViewController id="zDf-O8-iNf" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uvo-hQ-WNG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M73-EP-mXe">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M73-EP-mXe" id="296-Oh-ipN">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
@@ -148,7 +149,13 @@
                             <outlet property="delegate" destination="zDf-O8-iNf" id="IeJ-Va-0EN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Collection View Controller" id="IXh-YX-Kam"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="IXh-YX-Kam">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.app" catalog="system" id="eGa-Q3-s0X">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="lfZ-Qi-mLD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHD-8P-Wru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -208,17 +215,17 @@
             </objects>
             <point key="canvasLocation" x="125.54347826086958" y="136.23188405797103"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="WrV-Mg-GOg">
             <objects>
                 <tableViewController id="8zw-04-Vzj" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kTX-Ty-s2Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ELe-Rq-u58">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ELe-Rq-u58" id="ATu-4x-WGx">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
@@ -231,15 +238,28 @@
                             <outlet property="delegate" destination="8zw-04-Vzj" id="o4b-nw-7Hs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Table View Controller" id="Bwn-oX-sy1"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="Bwn-oX-sy1">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.app" catalog="system" id="0BL-Jg-IQq">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="cUz-2m-x0O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i33-6M-2y8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="967" y="136"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lfZ-Qi-mLD"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="collection_30x30" width="30" height="30"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="table_30x30" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
