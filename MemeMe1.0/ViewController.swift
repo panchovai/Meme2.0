@@ -121,7 +121,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func ShareAction(_ sender: Any) {
         
-        let memedImageToBeSaved = saveMeme()
+        let memedImageToBeSaved: () = saveMeme()
         let activityView = UIActivityViewController(activityItems: [memedImageToBeSaved], applicationActivities: nil)
         self.present(activityView, animated: true, completion: nil)
         
@@ -218,22 +218,26 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsGetImageFromCurrentImageContext()
+        
         return memedImage
     }
     
     
     func saveMeme(){
         
-        let memedImage = generateMemedImage()
+        //let memedImagetoSave = generateMemedImage()
         let meme = MemeStruct(topTextFieldString: topTextFieldOutlet.text!,
                        bottomTextFieldString: bottomTextFieldOutlet.text!,
-                       image: imageView.image!, memedImage: memedImage)
-        
+                       image: imageView.image!, memedImage: generateMemedImage())
+
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-    }
+        
+        }
+        
     
+    //MARK: Bug not saving meme object
     //shiftingviews, keyboard actions
     
     
